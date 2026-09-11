@@ -427,20 +427,13 @@
             <div class="contact-wrapper">
                 <p class="contact-intro">Per qualsiasi esigenza o richiesta di informazioni, compila i campi per contattarmi direttamente:</p>
                 
-                <form action="https://formspree.io/f/mgaeqryw" method="POST" class="contact-form" id="portfolio-form">
-    <input type="text" name="nome" placeholder="Il tuo nome" required>
-    <input type="email" name="email" placeholder="La tua email" required>
-    <textarea name="messaggio" placeholder="Il tuo messaggio..." rows="1" required></textarea>
-
-    <!-- Campo nascosto per prevenire spam (honeypot) -->
-    <input type="text" name="_honey" style="display:none">
-
-    <!-- Redirect dopo invio -->
-    <input type="hidden" name="_redirect" value="https://mdvstudio.vercel.app/grazie.html">
-
-    <button type="submit" class="btn-contact">Invia</button>
-</form>
-
+                <form name="contatti" method="POST" data-netlify="true" class="contact-form" id="portfolio-form">
+                    <input type="hidden" name="form-name" value="contatti" />
+                    <input type="text" name="nome" placeholder="Il tuo nome" required>
+                    <input type="email" name="email" placeholder="La tua email" required>
+                    <textarea name="messaggio" placeholder="Il tuo messaggio..." rows="1" required></textarea>
+                    <button type="submit" class="btn-contact">Invia</button>
+                </form>
             </div>
         </footer>
     </div>
