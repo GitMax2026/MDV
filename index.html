@@ -346,7 +346,6 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <!-- CORRETTO: nome file identico a quello nella repo -->
             <img src="./LOGO.svg" alt="Logo">
             <span>design</span>
         </div>
@@ -381,3 +380,86 @@
 
     <!-- Colonna Destra (Bento Grid) -->
     <div class="right-col">
+        <!-- Riquadro 1: Approccio al Design -->
+        <div class="bento-card wide">
+            <div class="bento-content">
+                <h3>Design del Sito</h3>
+                <p>Chiaro e pulito: in pratica, meno fronzoli e più sostanza. Ogni pixel ha uno scopo preciso per far risaltare il tuo brand e guidare l'utente.</p>
+            </div>
+            <div class="bento-image">
+                <img src="./foto-approccio.png" alt="Approccio al Design">
+            </div>
+        </div>
+
+        <!-- Riquadro 2: Design System -->
+        <div class="bento-card">
+            <div class="bento-content">
+                <h3>Design System</h3>
+                <p>Layout coerenti, tipografia curata e palette cromatiche studiate nel dettaglio.</p>
+            </div>
+            <div class="bento-image">
+                <img src="./foto-design-system.png" alt="Design System">
+            </div>
+        </div>
+
+        <!-- Riquadro 3: Siti Statici Veloci -->
+        <div class="bento-card">
+            <div class="bento-content">
+                <h3>Siti Statici Veloci</h3>
+                <p>Pagine leggere, sicure e istantanee nel caricamento.</p>
+            </div>
+            <div class="bento-image">
+                <img src="./foto-siti-veloci.png" alt="Siti Statici Veloci">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer con Modulo di Contatto Integrato -->
+    <footer>
+        <div class="socials">
+            <a href="#"><!-- EVENTUALE SOCIAL 1 --></a>
+            <a href="#"><!-- EVENTUALE SOCIAL 2 --></a>
+            <a href="#"><!-- EVENTUALE SOCIAL 3 --></a>
+            <a href="#"><!-- EVENTUALE SOCIAL 4 --></a>
+        </div>
+
+        <div class="contact-wrapper">
+            <p class="contact-intro">Per qualsiasi esigenza o richiesta di informazioni, compila i campi per contattarmi direttamente:</p>
+            
+            <form action="https://formspree.io/f/mgaeqryw" method="POST" class="contact-form" id="portfolio-form">
+                <input type="text" name="nome" placeholder="Il tuo nome" required>
+                <input type="email" name="email" placeholder="La tua email" required>
+                <textarea name="messaggio" placeholder="Il tuo messaggio..." rows="1" required></textarea>
+
+                <!-- Campo nascosto per prevenire spam (honeypot) -->
+                <input type="text" name="_honey" style="display:none">
+
+                <!-- Redirect dopo invio -->
+                <input type="hidden" name="_redirect" value="https://mdvstudio.vercel.app/grazie.html">
+
+                <button type="submit" class="btn-contact">Invia</button>
+            </form>
+
+        </div>
+    </footer>
+</div>
+
+<script>
+  const form = document.getElementById('portfolio-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    fetch('https://formspree.io/f/mgaeqryw', {
+      method: 'POST',
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString()
+    })
+    .then(() => {
+      alert('Messaggio inviato con successo!');
+      form.reset();
+    })
+    .catch(() => alert('Si è verificato un errore, riprova.'));
+  });
+</script>
+</body>
+</html>
