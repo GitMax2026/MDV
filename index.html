@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Portfolio & Web Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Reset e base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100dvh; /* Altezza dinamica iOS */
+            padding: 20px;
+            overflow-y: auto; /* Garantisce lo scorrimento se la card supera lo schermo */
+        }
+
+        /* Contenitore Fisso 1200x800 */
+        .main-card {
+            width: 1200px;
+            height: 800px;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            grid-template-rows: auto 1fr auto;
+            gap: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Bagliore decorativo di sfondo */
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            filter: blur(120px);
+            opacity: 0.3;
+            border-radius: 50%;
+            z-index: -1;
+            top: -50px;
+            left: -50px;
+        }
+
+        /* Header / Brand */
+        header {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .logo span {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            background: rgba(34, 197, 94, 0.1);
+            color: #4ade80;
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+        }
+
+        /* Colonna Sinistra: Intro & Servizi */
+        .left-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .hero-text p {
+            color: #94a3b8;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .service-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 14px 18px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateX(4px);
+        }
+
+        /* Colonna Destra: Bento Showcase */
+        .right-col {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .bento-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .bento-card:hover {
+            border-color: rgba(129, 140, 248, 0.4);
+        }
+
+        .bento-card.wide {
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15));
+        }
+
+        .bento-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #f1f5f9;
+        }
+
+        .bento-card p {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        .bento-image {
+            width: 100%;
+            margin-top: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+            max-height: 120px;
+        }
+
+        .bento-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .bento-card:hover .bento-image img {
+            transform: scale(1.05);
+        }
+
+        /* Footer / Call to Action */
+        footer {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
+        }
+
+        .socials {
+            display: flex;
+            gap: 16px;
+        }
+
+        .socials a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .socials a:hover {
+            color: #f8fafc;
+        }
+
+        .contact-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .contact-intro {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-align: right;
+        }
+
+        .contact-form {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap; /* Permette l'incolonnamento se lo schermo è stretto */
+            justify-content: flex-end;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 10px 16px;
+            color: #f8fafc;
+            font-size: 16px; /* 16px previene lo zoom automatico su iOS */
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #818cf8;
+        }
+
+        .contact-form textarea {
+            resize: none;
+        }
+
+        .btn-contact {
+            background: #f8fafc;
+            color: #0f172a;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-contact:hover {
+            background: #e2e8f0;
+            box-shadow: 0 0 20px rgba(248, 250, 252, 0.3);
+        }
+
+        /* Responsive per schermi inferiori a 1240px e Mobile */
+        @media (max-width: 1240px) {
+            body {
+                padding: 16px 16px 40px 16px; /* Spazio extra in fondo per iOS */
+            }
+            .main-card {
+                width: 100%;
+                height: auto;
+                grid-template-columns: 1fr;
+                overflow: visible; /* Permette alla card di allungarsi naturalmente */
+            }
+            .right-col {
+                grid-template-columns: 1fr;
+            }
+            .bento-card.wide {
+                grid-column: span 1;
+            }
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                align-items: stretch;
+            }
+            .contact-wrapper {
+                align-items: stretch;
+            }
+            .contact-intro {
+                text-align: left;
+            }
+            .contact-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-contact {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-card">
+        <div class="glow"></div>
+
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <img src="logo.svg" alt="Logo">
+                <span>design</span>
+            </div>
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                Progettazione e realizzazione di campagne di marketing
+            </div>
+        </header>
+
+        <!-- Colonna Sinistra -->
+        <div class="left-col">
+            <div class="hero-text">
+                <h1>Visual & Web Design su misura.</h1>
+                <p>Progetto ed esperienze digitali ad alto impatto visivo, unendo estetica moderna, identità di marca e funzionalità web. Supporto pieno alla tua Azienda, attraverso l'ideazione e realizzazione di siti e-Commerce.</p>
+            </div>
+
+            <div class="services-list">
+                <div class="service-item">
+                    <span>Web Design & Sviluppo progetti grafici</span>
+                    <span style="color: #818cf8;">→</span>
+                </div>
+                <div class="service-item">
+                    <span>Abbigliamento personalizzato</span>
+                    <span style="color: #818cf8;">→</span>
+                </div>
+                <div class="service-item">
+                    <span>Progettazione Insegne</span>
+                    <span style="color: #818cf8;">→</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Colonna Destra (Bento Grid) -->
+        <div class="right-col">
+            <!-- Riquadro 1: Approccio al Design -->
+            <div class="bento-card wide">
+                <div class="bento-content">
+                    <h3>Design del Sito</h3>
+                    <p>Chiaro e pulito: in pratica, meno fronzoli e più sostanza. Ogni pixel ha uno scopo preciso per far risaltare il tuo brand e guidare l'utente.</p>
+                </div>
+                <div class="bento-image">
+                    <img src="foto-approccio.png" alt="Approccio al Design">
+                </div>
+            </div>
+
+            <!-- Riquadro 2: Design System -->
+            <div class="bento-card">
+                <div class="bento-content">
+                    <h3>Design System</h3>
+                    <p>Layout coerenti, tipografia curata e palette cromatiche studiate nel dettaglio.</p>
+                </div>
+                <div class="bento-image">
+                    <img src="foto-design-system.png" alt="Design System">
+                </div>
+            </div>
+
+            <!-- Riquadro 3: Siti Statici Veloci -->
+            <div class="bento-card">
+                <div class="bento-content">
+                    <h3>Siti Statici Veloci</h3>
+                    <p>Pagine leggere, sicure e istantanee nel caricamento.</p>
+                </div>
+                <div class="bento-image">
+                    <img src="foto-siti-veloci.png" alt="Siti Statici Veloci">
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer con Modulo di Contatto Integrato -->
+        <footer>
+            <div class="socials">
+                <a href="#"><!-- EVENTUALE SOCIAL 1 --></a>
+                <a href="#"><!-- EVENTUALE SOCIAL 2 --></a>
+                <a href="#"><!-- EVENTUALE SOCIAL 3 --></a>
+                <a href="#"><!-- EVENTUALE SOCIAL 4 --></a>
+            </div>
+
+            <div class="contact-wrapper">
+                <p class="contact-intro">Per qualsiasi esigenza o richiesta di informazioni, compila i campi per contattarmi direttamente:</p>
+                
+                <form name="contatti" method="POST" data-netlify="true" class="contact-form" id="portfolio-form">
+                    <input type="hidden" name="form-name" value="contatti" />
+                    <input type="text" name="nome" placeholder="Il tuo nome" required>
+                    <input type="email" name="email" placeholder="La tua email" required>
+                    <textarea name="messaggio" placeholder="Il tuo messaggio..." rows="1" required></textarea>
+                    <button type="submit" class="btn-contact">Invia</button>
+                </form>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+      const form = document.getElementById('portfolio-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch('/', {
+          method: 'POST',
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString()
+        })
+        .then(() => {
+          alert('Messaggio inviato con successo!');
+          form.reset();
+        })
+        .catch((error) => alert('Si è verificato un errore, riprova.'));
+      });
+    </script>
+</body>
+</html>
