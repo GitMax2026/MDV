@@ -25,23 +25,24 @@
             overflow-y: auto; /* Garantisce lo scorrimento se la card supera lo schermo */
         }
 
-        /* Contenitore Fisso 1200x800 */
-        .main-card {
-            width: 1200px;
-            height: 800px;
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            grid-template-rows: auto 1fr auto;
-            gap: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
+        /* Contenitore Fisso 1300x900 */
+.main-card {
+    width: 1300px;      /* ← aumentato */
+    height: 900px;      /* ← aumentato */
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
 
         /* Bagliore decorativo di sfondo */
         .glow {
