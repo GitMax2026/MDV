@@ -6,12 +6,11 @@
     <title>Portfolio & Web Design</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    <!-- ⭐ Fancybox (Lightbox Professionale) -->
+    <!-- ⭐ Fancybox -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
 
     <style>
-        /* Reset e base */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -30,7 +29,6 @@
             overflow-y: auto;
         }
 
-        /* Contenitore Fisso 1300x900 */
         .main-card {
             width: 1300px;
             height: 900px;
@@ -169,28 +167,12 @@
             transition: border-color 0.3s ease;
         }
 
-        .bento-card:hover {
-            border-color: rgba(129, 140, 248, 0.4);
-        }
-
         .bento-card.wide {
             grid-column: span 2;
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15));
         }
 
-        .bento-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: #f1f5f9;
-        }
-
-        .bento-card p {
-            font-size: 0.85rem;
-            color: #94a3b8;
-            line-height: 1.4;
-        }
-
-        /* ⭐ Overlay "clicca per ingrandire" */
+        /* ⭐ Overlay sempre visibile */
         .bento-image {
             width: 100%;
             margin-top: 12px;
@@ -211,19 +193,8 @@
             background: rgba(0, 0, 0, 0.45);
             padding: 6px 14px;
             border-radius: 12px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            opacity: 1; /* ⭐ SEMPRE VISIBILE */
             pointer-events: none;
-        }
-
-        .bento-card:hover .zoom-hint {
-            opacity: 1;
-        }
-
-        @media (max-width: 768px) {
-            .zoom-hint {
-                opacity: 1;
-            }
         }
 
         .bento-image img {
@@ -297,11 +268,6 @@
             transition: border-color 0.2s;
         }
 
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            border-color: #818cf8;
-        }
-
         .contact-form textarea {
             height: 45px;
             resize: vertical;
@@ -319,11 +285,6 @@
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
-        }
-
-        .btn-contact:hover {
-            background: #e2e8f0;
-            box-shadow: 0 0 20px rgba(248, 250, 252, 0.3);
         }
 
         @media (max-width: 1240px) {
@@ -405,7 +366,7 @@ Campagne di volantinaggio mirate.</p>
 
     <div class="right-col">
 
-        <!-- ⭐ Riquadro 1 con Fancybox + overlay -->
+        <!-- ⭐ Riquadro 1 -->
         <div class="bento-card wide">
             <div class="bento-content">
                 <h3>Design del Sito</h3>
@@ -419,7 +380,7 @@ Campagne di volantinaggio mirate.</p>
             </div>
         </div>
 
-        <!-- ⭐ Riquadro 2 con Fancybox + overlay -->
+        <!-- ⭐ Riquadro 2 -->
         <div class="bento-card">
             <div class="bento-content">
                 <h3>Design System</h3>
@@ -433,7 +394,7 @@ Campagne di volantinaggio mirate.</p>
             </div>
         </div>
 
-        <!-- ⭐ Riquadro 3 con Fancybox + overlay -->
+        <!-- ⭐ Riquadro 3 -->
         <div class="bento-card">
             <div class="bento-content">
                 <h3>Siti Statici Veloci</h3>
