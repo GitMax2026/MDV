@@ -104,10 +104,12 @@
             letter-spacing: -1px;
         }
 
+        /* ⭐ TESTO AGGIORNATO CON PARAGRAFI SEPARATI */
         .hero-text p {
             color: #94a3b8;
             font-size: 1rem;
             line-height: 1.6;
+            margin-bottom: 12px; /* spazio tra paragrafi */
         }
 
         .services-list { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
@@ -155,7 +157,7 @@
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15));
         }
 
-        /* ⭐ Overlay sempre visibile, senza banda scura */
+        /* ⭐ Overlay sempre visibile */
         .bento-image {
             width: 100%;
             margin-top: 12px;
@@ -173,8 +175,8 @@
             color: #ffffff;
             font-size: 0.85rem;
             font-weight: 700;
-            opacity: 1; /* SEMPRE VISIBILE */
-            z-index: 10; /* SOPRA L’IMMAGINE */
+            opacity: 1;
+            z-index: 10;
             pointer-events: none;
         }
 
@@ -185,7 +187,7 @@
             display: block;
             transition: transform 0.3s ease;
             position: relative;
-            z-index: 1; /* SOTTO LA SCRITTA */
+            z-index: 1;
         }
 
         .bento-card:hover .bento-image img {
@@ -297,11 +299,13 @@
     <div class="left-col">
         <div class="hero-text">
             <h1>Comunicazione Visiva & Web Design.</h1>
-            <p>
-Progettazione e realizzazione diretta di Insegne, Totem ad alto impatto visivo che uniscono estetica e funzionalità.<br>
-Supporto pieno alle necessità di Comunicazione della tua Azienda, attraverso l'ideazione e realizzazione di Siti Web anche e-Commerce.<br>
-Campagne di volantinaggio mirate.
-</p>
+
+            <!-- ⭐ TESTO DIVISO IN PARAGRAFI -->
+            <p>Progettazione e realizzazione diretta di Insegne, Totem ad alto impatto visivo che uniscono estetica e funzionalità.</p>
+
+            <p>Supporto pieno alle necessità di Comunicazione della tua Azienda, attraverso l'ideazione e realizzazione di Siti Web anche e-Commerce.</p>
+
+            <p>Campagne di volantinaggio mirate.</p>
         </div>
 
         <div class="services-list">
