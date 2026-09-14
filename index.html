@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Portfolio & Web Design</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- ⭐ Fancybox (Lightbox Professionale) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+
     <style>
         /* Reset e base */
         * {
@@ -20,31 +25,29 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100dvh; /* Altezza dinamica iOS */
+            min-height: 100dvh;
             padding: 20px;
-            overflow-y: auto; /* Garantisce lo scorrimento se la card supera lo schermo */
+            overflow-y: auto;
         }
 
         /* Contenitore Fisso 1300x900 */
-.main-card {
-    width: 1300px;      /* ← aumentato */
-    height: 900px;      /* ← aumentato */
-    background: rgba(30, 41, 59, 0.7);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 40px;
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    grid-template-rows: auto 1fr auto;
-    gap: 24px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    position: relative;
-    overflow: hidden;
-}
+        .main-card {
+            width: 1300px;
+            height: 900px;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            grid-template-rows: auto 1fr auto;
+            gap: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
 
-
-        /* Bagliore decorativo di sfondo */
         .glow {
             position: absolute;
             width: 300px;
@@ -58,7 +61,6 @@
             left: -50px;
         }
 
-        /* Header / Brand */
         header {
             grid-column: 1 / -1;
             display: flex;
@@ -66,12 +68,6 @@
             align-items: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             padding-bottom: 16px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
         }
 
         .logo img {
@@ -108,7 +104,6 @@
             box-shadow: 0 0 8px #22c55e;
         }
 
-        /* Colonna Sinistra: Intro & Servizi */
         .left-col {
             display: flex;
             flex-direction: column;
@@ -155,7 +150,6 @@
             transform: translateX(4px);
         }
 
-        /* Colonna Destra: Bento Showcase */
         .right-col {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -216,7 +210,6 @@
             transform: scale(1.05);
         }
 
-        /* Footer / Call to Action */
         footer {
             grid-column: 1 / -1;
             display: flex;
@@ -259,9 +252,9 @@
             display: flex;
             gap: 10px;
             align-items: center;
-            flex-wrap: wrap; /* Permette l'incolonnamento se lo schermo è stretto */
+            flex-wrap: wrap;
             justify-content: flex-end;
-            margin-bottom: 60px; /* ✅ spazio sotto il form */
+            margin-bottom: 60px;
         }
 
         .contact-form input,
@@ -271,7 +264,7 @@
             border-radius: 20px;
             padding: 10px 16px;
             color: #f8fafc;
-            font-size: 16px; /* 16px previene lo zoom automatico su iOS */
+            font-size: 16px;
             outline: none;
             transition: border-color 0.2s;
         }
@@ -281,7 +274,6 @@
             border-color: #818cf8;
         }
 
-        /* ✅ textarea ad una sola riga, ma scrollabile/espandibile */
         .contact-form textarea {
             height: 45px;
             resize: vertical;
@@ -306,16 +298,15 @@
             box-shadow: 0 0 20px rgba(248, 250, 252, 0.3);
         }
 
-        /* Responsive per schermi inferiori a 1240px e Mobile */
         @media (max-width: 1240px) {
             body {
-                padding: 16px 16px 40px 16px; /* Spazio extra in fondo per iOS */
+                padding: 16px 16px 40px 16px;
             }
             .main-card {
                 width: 100%;
                 height: auto;
                 grid-template-columns: 1fr;
-                overflow: visible; /* Permette alla card di allungarsi naturalmente */
+                overflow: visible;
             }
             .right-col {
                 grid-template-columns: 1fr;
@@ -349,7 +340,6 @@
 <div class="main-card">
     <div class="glow"></div>
 
-    <!-- Header -->
     <header>
         <div class="logo">
             <img src="./LOGO.svg" alt="Logo">
@@ -361,7 +351,6 @@
         </div>
     </header>
 
-    <!-- Colonna Sinistra -->
     <div class="left-col">
         <div class="hero-text">
             <h1>Comunicazione Visiva & Web Design.</h1>
@@ -386,49 +375,55 @@ Campagne di volantinaggio mirate.</p>
         </div>
     </div>
 
-    <!-- Colonna Destra (Bento Grid) -->
     <div class="right-col">
-        <!-- Riquadro 1: Approccio al Design -->
+
+        <!-- ⭐ Riquadro 1 con Fancybox -->
         <div class="bento-card wide">
             <div class="bento-content">
                 <h3>Design del Sito</h3>
                 <p>Chiaro e pulito: in pratica, meno fronzoli e più sostanza. Ogni pixel ha uno scopo preciso per far risaltare il tuo brand e guidare l'utente.</p>
             </div>
             <div class="bento-image">
-                <img src="./foto-approccio.png" alt="Approccio al Design">
+                <a data-fancybox="gallery" href="./foto-approccio.png">
+                    <img src="./foto-approccio.png" alt="Approccio al Design">
+                </a>
             </div>
         </div>
 
-        <!-- Riquadro 2: Design System -->
+        <!-- ⭐ Riquadro 2 con Fancybox -->
         <div class="bento-card">
             <div class="bento-content">
                 <h3>Design System</h3>
                 <p>Layout coerenti, tipografia curata e palette cromatiche studiate nel dettaglio.</p>
             </div>
             <div class="bento-image">
-                <img src="./foto-design-system.png" alt="Design System">
+                <a data-fancybox="gallery" href="./foto-design-system.png">
+                    <img src="./foto-design-system.png" alt="Design System">
+                </a>
             </div>
         </div>
 
-        <!-- Riquadro 3: Siti Statici Veloci -->
+        <!-- ⭐ Riquadro 3 con Fancybox -->
         <div class="bento-card">
             <div class="bento-content">
                 <h3>Siti Statici Veloci</h3>
                 <p>Pagine leggere, sicure e istantanee nel caricamento.</p>
             </div>
             <div class="bento-image">
-                <img src="./foto-siti-veloci.png" alt="Siti Statici Veloci">
+                <a data-fancybox="gallery" href="./foto-siti-veloci.png">
+                    <img src="./foto-siti-veloci.png" alt="Siti Statici Veloci">
+                </a>
             </div>
         </div>
+
     </div>
 
-    <!-- Footer con Modulo di Contatto Integrato -->
     <footer>
         <div class="socials">
-            <a href="#"><!-- EVENTUALE SOCIAL 1 --></a>
-            <a href="#"><!-- EVENTUALE SOCIAL 2 --></a>
-            <a href="#"><!-- EVENTUALE SOCIAL 3 --></a>
-            <a href="#"><!-- EVENTUALE SOCIAL 4 --></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
         </div>
 
         <div class="contact-wrapper">
