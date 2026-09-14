@@ -11,12 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
 
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
 
         body {
             background-color: #0f172a;
@@ -68,10 +63,7 @@
             padding-bottom: 16px;
         }
 
-        .logo img {
-            height: 80px;
-            width: auto;
-        }
+        .logo img { height: 80px; width: auto; }
 
         .logo span {
             font-weight: 800;
@@ -102,11 +94,7 @@
             box-shadow: 0 0 8px #22c55e;
         }
 
-        .left-col {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+        .left-col { display: flex; flex-direction: column; justify-content: space-between; }
 
         .hero-text h1 {
             font-size: 2.8rem;
@@ -122,12 +110,7 @@
             line-height: 1.6;
         }
 
-        .services-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 24px;
-        }
+        .services-list { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
 
         .service-item {
             background: rgba(255, 255, 255, 0.03);
@@ -172,7 +155,7 @@
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15));
         }
 
-        /* ⭐ Overlay sempre visibile */
+        /* ⭐ Overlay sempre visibile, senza banda scura */
         .bento-image {
             width: 100%;
             margin-top: 12px;
@@ -187,13 +170,11 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: #f8fafc;
+            color: #ffffff;
             font-size: 0.85rem;
-            font-weight: 600;
-            background: rgba(0, 0, 0, 0.45);
-            padding: 6px 14px;
-            border-radius: 12px;
-            opacity: 1; /* ⭐ SEMPRE VISIBILE */
+            font-weight: 700;
+            opacity: 1; /* SEMPRE VISIBILE */
+            z-index: 10; /* SOPRA L’IMMAGINE */
             pointer-events: none;
         }
 
@@ -203,6 +184,8 @@
             object-fit: cover;
             display: block;
             transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1; /* SOTTO LA SCRITTA */
         }
 
         .bento-card:hover .bento-image img {
@@ -218,10 +201,7 @@
             padding-top: 20px;
         }
 
-        .socials {
-            display: flex;
-            gap: 16px;
-        }
+        .socials { display: flex; gap: 16px; }
 
         .socials a {
             color: #94a3b8;
@@ -230,9 +210,7 @@
             transition: color 0.2s;
         }
 
-        .socials a:hover {
-            color: #f8fafc;
-        }
+        .socials a:hover { color: #f8fafc; }
 
         .contact-wrapper {
             display: flex;
@@ -288,39 +266,15 @@
         }
 
         @media (max-width: 1240px) {
-            body {
-                padding: 16px 16px 40px 16px;
-            }
-            .main-card {
-                width: 100%;
-                height: auto;
-                grid-template-columns: 1fr;
-                overflow: visible;
-            }
-            .right-col {
-                grid-template-columns: 1fr;
-            }
-            .bento-card.wide {
-                grid-column: span 1;
-            }
-            footer {
-                flex-direction: column;
-                gap: 20px;
-                align-items: stretch;
-            }
-            .contact-wrapper {
-                align-items: stretch;
-            }
-            .contact-intro {
-                text-align: left;
-            }
-            .contact-form {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .btn-contact {
-                width: 100%;
-            }
+            body { padding: 16px 16px 40px 16px; }
+            .main-card { width: 100%; height: auto; grid-template-columns: 1fr; overflow: visible; }
+            .right-col { grid-template-columns: 1fr; }
+            .bento-card.wide { grid-column: span 1; }
+            footer { flex-direction: column; gap: 20px; align-items: stretch; }
+            .contact-wrapper { align-items: stretch; }
+            .contact-intro { text-align: left; }
+            .contact-form { flex-direction: column; align-items: stretch; }
+            .btn-contact { width: 100%; }
         }
     </style>
 </head>
