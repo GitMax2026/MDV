@@ -190,12 +190,40 @@
             line-height: 1.4;
         }
 
+        /* ⭐ Overlay "clicca per ingrandire" */
         .bento-image {
             width: 100%;
             margin-top: 12px;
             border-radius: 10px;
             overflow: hidden;
             max-height: 120px;
+            position: relative;
+        }
+
+        .zoom-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #f8fafc;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.45);
+            padding: 6px 14px;
+            border-radius: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .bento-card:hover .zoom-hint {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .zoom-hint {
+                opacity: 1;
+            }
         }
 
         .bento-image img {
@@ -377,39 +405,42 @@ Campagne di volantinaggio mirate.</p>
 
     <div class="right-col">
 
-        <!-- ⭐ Riquadro 1 con Fancybox -->
+        <!-- ⭐ Riquadro 1 con Fancybox + overlay -->
         <div class="bento-card wide">
             <div class="bento-content">
                 <h3>Design del Sito</h3>
                 <p>Chiaro e pulito: in pratica, meno fronzoli e più sostanza. Ogni pixel ha uno scopo preciso per far risaltare il tuo brand e guidare l'utente.</p>
             </div>
             <div class="bento-image">
+                <span class="zoom-hint">clicca per ingrandire</span>
                 <a data-fancybox="gallery" href="./foto-approccio.png">
                     <img src="./foto-approccio.png" alt="Approccio al Design">
                 </a>
             </div>
         </div>
 
-        <!-- ⭐ Riquadro 2 con Fancybox -->
+        <!-- ⭐ Riquadro 2 con Fancybox + overlay -->
         <div class="bento-card">
             <div class="bento-content">
                 <h3>Design System</h3>
                 <p>Layout coerenti, tipografia curata e palette cromatiche studiate nel dettaglio.</p>
             </div>
             <div class="bento-image">
+                <span class="zoom-hint">clicca per ingrandire</span>
                 <a data-fancybox="gallery" href="./foto-design-system.png">
                     <img src="./foto-design-system.png" alt="Design System">
                 </a>
             </div>
         </div>
 
-        <!-- ⭐ Riquadro 3 con Fancybox -->
+        <!-- ⭐ Riquadro 3 con Fancybox + overlay -->
         <div class="bento-card">
             <div class="bento-content">
                 <h3>Siti Statici Veloci</h3>
                 <p>Pagine leggere, sicure e istantanee nel caricamento.</p>
             </div>
             <div class="bento-image">
+                <span class="zoom-hint">clicca per ingrandire</span>
                 <a data-fancybox="gallery" href="./foto-siti-veloci.png">
                     <img src="./foto-siti-veloci.png" alt="Siti Statici Veloci">
                 </a>
